@@ -20,17 +20,20 @@ class ViewController: UIViewController {
             button.backgroundColor = #colorLiteral(red: 0.07526155561, green: 0.4578902721, blue: 0.8260596395, alpha: 1)
             button.setTitle("", for: .normal)
         } else {
-            
+            button.titleLabel?.font = .systemFont(ofSize: 90)
             button.setTitle(emoji, for: .normal)
-            button.titleLabel?.font = UIFont(name: button.titleLabel?.font.fontName ?? "", size: 90)
-            button.backgroundColor = UIColor.white
+            button.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         }
     }
     
+    let buttonsEmoji = ["🦊","🦊","🐰","🐰"]
+    
     @IBOutlet var buttonCollection: [UIButton]!
     @IBAction func buttonAction(_ sender: UIButton) {
-        touches += 1
-        flipButton(emoji: "🦊", button: sender)
+        if let buttonIndex = buttonCollection.firstIndex(of: sender) {
+            touches += 1
+            flipButton(emoji: buttonsEmoji[buttonIndex], button: sender)
+        }
     }
     
     @IBOutlet weak var touchlabel: UILabel!
